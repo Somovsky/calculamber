@@ -5,9 +5,9 @@ import tkinter.ttk as ttk
 from tkinter import messagebox
 from decimal import *
 
-
+#Создаем класс для окна приложения
 class Window(ttk.Frame):
-
+    # основные настройки
     def __init__(self, master):
         super().__init__(master, padding=2)
         self.create_variables()
@@ -15,6 +15,7 @@ class Window(ttk.Frame):
         self.create_layout()
         self.bind_buttons()
 
+    #создание перемнных
     def create_variables(self):
         self.var1 = tk.StringVar()
         self.var2 = tk.StringVar()
@@ -26,6 +27,7 @@ class Window(ttk.Frame):
         self.language = tk.StringVar()
         self.language.set('Русский')
 
+    #описание виджета смены языка
     def create_widgets(self):
         self.var1Entry = ttk.Entry(self, textvariable=self.var1)
         self.Button = ttk.Button(self, text=self.localizations[self.language.get()][0])
@@ -42,6 +44,7 @@ class Window(ttk.Frame):
                                                   command=self.ChangeLanguage, value='Український')
         self.InfoButton = ttk.Button(self, text=self.localizations[self.language.get()][3])
 
+    #описание интерфейса
     def create_layout(self):
         self.var1Label.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.S, tk.N))
         self.var1Entry.grid(row=0, column=1, columnspan=2, sticky=(tk.W, tk.E, tk.S, tk.N))
@@ -64,6 +67,7 @@ class Window(ttk.Frame):
         self.master.grid_columnconfigure(0, weight=1)
         self.master.grid_rowconfigure(0, weight=1)
 
+    #процедура вычисления корня
     def calculate(self, event):
         try:
             flag = False
@@ -80,9 +84,11 @@ class Window(ttk.Frame):
         except:
             self.var2.set(self.localizations[self.language.get()][7])
 
+    #функция вызова меню о программе
     def ShowInfo(self, event):
         messagebox.showinfo(title=self.localizations[self.language.get()][3],message=self.localizations[self.language.get()][4])
 
+    #функция смены языка
     def ChangeLanguage(self):
         self.Button.config(text=self.localizations[self.language.get()][0])
         self.var1Label.config(text=self.localizations[self.language.get()][1])
@@ -90,11 +96,12 @@ class Window(ttk.Frame):
         self.var3Label.config(text=self.localizations[self.language.get()][5])
         self.InfoButton.config(text=self.localizations[self.language.get()][3])
 
+    #бинд клавиш
     def bind_buttons(self):
         self.Button.bind('<Button-1>', self.calculate)
         self.InfoButton.bind('<Button-1>', self.ShowInfo)
 
-
+#основная процедура
 def main():
     root = tk.Tk()
     Window(root)
@@ -102,5 +109,5 @@ def main():
     root.minsize(width=530, height=70)
     root.mainloop()
 
-
+#вызов основной процедуры
 main()
