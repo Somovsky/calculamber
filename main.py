@@ -72,11 +72,11 @@ class Window(ttk.Frame):
                 flag = True
                 a = abs(a)
             val1 = Decimal(a)
-            getcontext().prec = int(self.var3.get()) + len(str(round(a)))
+            getcontext().prec = int(self.var3.get()) + len(str(int(a**Decimal('0.5'))))
             if flag:
-                self.var2.set(str(val1 ** Decimal('0.5')) + 'i')
+                self.var2.set(str((val1 ** Decimal('0.5')).quantize(Decimal(str(10**(-int(self.var3.get())))))) + 'i')
             else:
-                self.var2.set(str(val1 ** Decimal('0.5')))
+                self.var2.set(str((val1 ** Decimal('0.5')).quantize(Decimal(str(10**(-int(self.var3.get())))))))
         except:
             self.var2.set(self.localizations[self.language.get()][7])
 
