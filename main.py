@@ -67,12 +67,12 @@ class Window(ttk.Frame):
     def calculate(self, event):
         try:
             flag = False
-            a = int(self.var1.get())
+            a = Decimal(self.var1.get())
             if a < 0:
                 flag = True
                 a = abs(a)
             val1 = Decimal(a)
-            getcontext().prec = int(self.var3.get()) + len(str(int(a**0.5)))
+            getcontext().prec = int(self.var3.get()) + len(str(round(a)))
             if flag:
                 self.var2.set(str(val1 ** Decimal('0.5')) + 'i')
             else:
