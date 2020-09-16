@@ -2,7 +2,6 @@ from math import sqrt
 from decimal import *
 import tkinter as tk
 import tkinter.ttk as ttk
-
 from tkinter import messagebox
 from decimal import *
 
@@ -43,7 +42,7 @@ class Window(ttk.Frame):
                                                   command=self.ChangeLanguage, value='Український')
         self.InfoButton = ttk.Button(self, text=self.localizations[self.language.get()][3])
 
-    def create_layout(self):-
+    def create_layout(self):
         self.var1Label.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.S, tk.N))
         self.var1Entry.grid(row=0, column=1, columnspan=2, sticky=(tk.W, tk.E, tk.S, tk.N))
         self.var2Label.grid(row=2, column=0, sticky=(tk.W, tk.E, tk.S, tk.N))
