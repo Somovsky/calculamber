@@ -20,9 +20,9 @@ class Window(ttk.Frame):
         self.var2 = tk.StringVar()
         self.var3 = tk.StringVar()
         self.var3.set('0')
-        self.localizations = dict(English=['Calculate', 'Enter number:', 'Answer:', 'About', 'Calculamber\nAutors: Teplouhov Vladislav, Nikolay Perminov\nOfficial page: http://en.k0per.design/\nВерсия: 1.0', 'Digits after the decimal point:', 'Calculamber'],
-                                  Русский=['Посчитать', 'Введите число:', 'Ответ:', 'О программе', 'Калькулямбер\nАвторы: Теплоухов Владислав, Николай Перминов\nОфициальный сайт: http://ru.k0per.design/\nВерсия: 1.0', 'Цифр после запятой:', 'Калькулямбер'],
-                                  Український=['Порахувати', 'Введіть число:', 'Відповідь:', 'Про програму', 'Калькулямбер\nАвтори: Теплоухов Владiслав, Нiколай Пермiнов\nОфіційний сайт: http://ua.k0per.design/\nВерсiя 1.0', 'Цифр після коми:', 'Калькулямбер'])
+        self.localizations = dict(English=['Calculate', 'Enter number:', 'Answer:', 'About', 'Calculamber\nAutors: Teplouhov Vladislav, Nikolay Perminov\nOfficial page: http://en.k0per.design/\nВерсия: 1.0', 'Digits after the decimal point:', 'Calculamber', 'Error'],
+                                  Русский=['Посчитать', 'Введите число:', 'Ответ:', 'О программе', 'Калькулямбер\nАвторы: Теплоухов Владислав, Николай Перминов\nОфициальный сайт: http://ru.k0per.design/\nВерсия: 1.0', 'Цифр после запятой:', 'Калькулямбер', 'Ошибка'],
+                                  Український=['Порахувати', 'Введіть число:', 'Відповідь:', 'Про програму', 'Калькулямбер\nАвтори: Теплоухов Владiслав, Нiколай Пермiнов\nОфіційний сайт: http://ua.k0per.design/\nВерсiя 1.0', 'Цифр після коми:', 'Калькулямбер', 'Помилка'])
         self.language = tk.StringVar()
         self.language.set('Русский')
 
@@ -78,7 +78,7 @@ class Window(ttk.Frame):
             else:
                 self.var2.set(str(val1 ** Decimal('0.5')))
         except:
-            self.var2.set('Error')
+            self.var2.set(self.localizations[self.language.get()][7])
 
     def ShowInfo(self, event):
         messagebox.showinfo(title=self.localizations[self.language.get()][3],message=self.localizations[self.language.get()][4])
